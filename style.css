@@ -4,7 +4,9 @@
     --main-content-background-color: lightgrey;
 
     --sidebar-width: 200px;
+    --header-height: 150px;
 
+    --project-height: 240px;
 }
 
 * {
@@ -18,7 +20,7 @@
     display: grid;
     min-height: 100vh;
     grid-template-columns: var(--sidebar-width) 1fr;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: var(--header-height) 1fr;
     grid-template-areas: 
     "sidebar header"
     "sidebar main-content";
@@ -26,94 +28,104 @@
 }
 
 .header {
-    grid-area: header;
-
+    /* Styling */
     background-color: var(--header-background-color);
 
+    /* Grid */
     display: grid;
     grid-template-columns: 1fr 200px;
+    grid-area: header;
 }
 
 .sidebar {
-    grid-area: sidebar;
-
-    background-color: var(--sidebar-background-color);
-
-    display: grid;
-    align-items: start;
-    grid-auto-rows: min-content;
+    /* Boxing */
     gap: 40px;
     padding: 18px;
+
+    /* Styling */
+    background-color: var(--sidebar-background-color);
+
+    /* Grid */
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-area: sidebar;
+    align-items: start;
 }
 
 .main-content {
-    grid-area: main-content;
-
+    /* Styling */
     background-color: var(--main-content-background-color);
 
+    /* Gird */
     display: grid;
     grid-template-columns: 1fr 400px;
+    grid-area: main-content;
 
+    /* Boxing */
     padding: 64px 32px;
     
 }
 
 .projects {
-    position: relative;
+    /* Styling */
     background-color: brown;
+
+    /* Grid */
     display: grid;
-    gap: 15px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fit, 240px);
+    grid-template-rows: repeat(auto-fit, var(--project-height));
+    gap: 15px;
+
+    /* Boxing */
     margin-right: 32px;
 }
 
-.projects::before {
-    content: "Your Projects";
+/* Creating the titles for the sections in main-content */
+
+.projects, .announcements, .trending {
+    position: relative;
+}
+
+.projects::before, .announcements::before, .trending::before {
     position: absolute;
     font-size: 1em;
     top: -2em
 }
 
+.projects::before {
+    content: "Your Projects"; 
+}
+
 .announcements::before {
     content: "Announcements";
-    position: absolute;
-    font-size: 1em;
-    top: -2em;
 }
 
 .trending::before {
     content: "Trending";
-    position: absolute;
-    font-size: 1em;
-    top: -2em;
+}
+
+/* Alignment of content inside trending and announcements */
+
+.trending, .announcements {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.trending {
+    background-color: chartreuse;
+    margin-top: 64px;
 }
 
 .announcements {
     background-color: aquamarine;
-
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-
-    position: relative;
 }
 
-
-.trending {
-    background-color: chartreuse;
-
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 64px;
-
-    position: relative;
-}
+/* Styling of the divs in main-content */
 
 .projects div {
     background-color: yellow;
-    height: 240px;
+    height: var(--project-height);
 }
 
 .announcements div {
