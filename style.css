@@ -1,0 +1,96 @@
+:root {
+    --header-background-color: purple;
+    --sidebar-background-color: blue;
+    --main-content-background-color: lightgrey;
+
+    --sidebar-width: 200px;
+
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+.container {
+    display: grid;
+    height: 100%;
+    grid-template-columns: var(--sidebar-width) 1fr;
+    grid-template-rows: 150px 1fr;
+    grid-template-areas: 
+    "sidebar header"
+    "sidebar main-content";
+}
+
+.header {
+    grid-area: header;
+
+    background-color: var(--header-background-color);
+
+    display: grid;
+    grid-template-columns: 1fr 200px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+
+    background-color: var(--sidebar-background-color);
+
+    display: grid;
+    align-items: start;
+    grid-auto-rows: min-content;
+    gap: 40px;
+    padding: 18px;
+}
+
+.main-content {
+    grid-area: main-content;
+
+    background-color: var(--main-content-background-color);
+
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    grid-template-areas: 
+    "projects announcements"
+    "projects trending";
+
+}
+
+.projects {
+    background-color: brown;
+    grid-area: projects;
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.announcements {
+    background-color: aquamarine;
+    grid-area: announcements;
+
+    display: inline-grid;
+    gap: 5px;
+    grid-template-rows: repeat(auto-fit, auto);
+}
+
+.trending {
+    background-color: chartreuse;
+    grid-area: trending;
+
+    display: inline-grid;
+    gap: 20px;
+    grid-template-rows: repeat(auto-fit, 80px);
+}
+
+.projects div {
+    height: 200px;
+    background-color: yellow;
+}
+
+.announcements div {
+    background-color: chocolate;
+}
+
+.trending div {
+    background-color: darksalmon;
+}
