@@ -14,7 +14,7 @@
 
 .container {
     display: grid;
-    height: 100%;
+    min-height: 100vh;
     grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-rows: 150px 1fr;
     grid-template-areas: 
@@ -49,48 +49,46 @@
     background-color: var(--main-content-background-color);
 
     display: grid;
-    grid-template-columns: 1fr 200px;
-    grid-template-areas: 
-    "projects announcements"
-    "projects trending";
-
+    grid-template-columns: 1fr 400px;
+    
 }
 
 .projects {
     background-color: brown;
-    grid-area: projects;
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, 240px);
 }
 
 .announcements {
     background-color: aquamarine;
-    grid-area: announcements;
 
-    display: inline-grid;
+    display: flex;
+    flex-direction: column;
     gap: 5px;
-    grid-template-rows: repeat(auto-fit, auto);
 }
 
 .trending {
     background-color: chartreuse;
-    grid-area: trending;
 
-    display: inline-grid;
-    gap: 20px;
-    grid-template-rows: repeat(auto-fit, 80px);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .projects div {
-    height: 200px;
     background-color: yellow;
 }
 
 .announcements div {
     background-color: chocolate;
+    flex-shrink: 0;
+    height: 120px;
 }
 
 .trending div {
     background-color: darksalmon;
+    flex-shrink: 0;
+    height: 80px;
 }
