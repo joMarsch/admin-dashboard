@@ -1,12 +1,15 @@
 :root {
-    --header-background-color: purple;
-    --sidebar-background-color: blue;
+    --header-background-color: white;
+    --sidebar-background-color: rgb(40, 101, 231);
     --main-content-background-color: lightgrey;
 
-    --sidebar-width: 200px;
-    --header-height: 150px;
+    --sidebar-width: 300px;
+    --header-height: 200px;
 
     --project-height: 240px;
+
+
+    --account-image-standard-width: 80px;
 }
 
 * {
@@ -16,24 +19,31 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 .container {
     display: grid;
     min-height: 100vh;
     grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-rows: var(--header-height) 1fr;
-    grid-template-areas: 
+    grid-template-areas:
     "sidebar header"
     "sidebar main-content";
-    
+
 }
 
 .header {
+    /* Boxing */
+    padding: 16px 32px;
+
     /* Styling */
     background-color: var(--header-background-color);
 
     /* Grid */
     display: grid;
-    grid-template-columns: 1fr 200px;
+    grid-template-columns: 1fr 400px;
     grid-area: header;
 }
 
@@ -43,6 +53,7 @@
     padding: 18px;
 
     /* Styling */
+    color: white;
     background-color: var(--sidebar-background-color);
 
     /* Grid */
@@ -63,7 +74,7 @@
 
     /* Boxing */
     padding: 64px 32px;
-    
+
 }
 
 .projects {
@@ -80,6 +91,164 @@
     margin-right: 32px;
 }
 
+/* Styling the content of the sidebar */
+
+.sidebar ul {
+    list-style-type: none;
+    font-weight: bold;
+}
+
+.sidebar h1 {
+    font-size: 1.7em;
+}
+
+.sidebar ul li {
+    margin-bottom: 20px;
+}
+
+.sidebar ul li a, .logo a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    
+}
+
+.icon {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--sidebar-background-color);
+    padding: 16px;
+}
+
+.logo-icon {
+    background-image: url(pictures/anvil.svg);
+    padding: 32px;
+}
+
+.home-icon {
+    background-image: url(pictures/home.svg);
+}
+
+.profile-icon {
+    background-image: url(pictures/card-account-details-outline.svg);
+}
+
+.message-icon {
+    background-image: url(pictures/message.svg);
+}
+
+.history-icon {
+    background-image: url(pictures/clock-time-five-outline.svg);
+}
+
+.task-icon {
+    background-image: url(pictures/tooltip-edit-outline.svg);
+}
+
+.community-icon {
+    background-image: url(pictures/account-group.svg);
+}
+
+.settings-icon {
+    background-image: url(pictures/cog.svg);
+}
+
+.support-icon {
+    background-image: url(pictures/help-box.svg);
+}
+
+.privacy-icon {
+    background-image: url(pictures/shield-check.svg);
+}
+
+/* Styling the content of the header */
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    background-color: var(--main-content-background-color);
+    border-radius: 2em;
+    border: 0px;
+
+    padding: 5px;
+    width: clamp(200px,100%,600px);
+}
+
+.account-big, .account-small {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.account-small {
+    font-weight: bold;
+    justify-content: flex-end;
+}
+
+.account-big {
+    font-weight: bold;
+    font-size: 1.25em;
+}
+
+.account-big div {
+    display: grid;
+}
+
+.account-big div span:first-child {
+    font-size: 0.75em;
+}
+
+.account-big img {
+    width: var(--account-image-standard-width);
+    height: auto;
+}
+
+.account-small img {
+    width: calc(0.6 * var(--account-image-standard-width));
+    height: auto;
+}
+
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    align-items: center;
+}
+
+.actions button {
+    color: white;
+    font-weight: bold;
+    font-size: 0.9em;
+    height: 3em;
+    background-color: var(--sidebar-background-color);
+    padding: 8px 16px;
+    width: 100px;
+    border: 0px;
+    border-radius: 32px;
+}
+
+.icon-button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: var(--header-background-color);
+    border: 0px;
+    padding: 16px;
+    border-radius: 32px;
+}
+
+.bell-button {
+    background-image: url(pictures/bell-outline.svg);
+}
+
+.search-button {
+    background-image: url(pictures/magnify.svg);
+}
+
 /* Creating the titles for the sections in main-content */
 
 .projects, .announcements, .trending {
@@ -88,12 +257,13 @@
 
 .projects::before, .announcements::before, .trending::before {
     position: absolute;
-    font-size: 1em;
+    font-size: 1.2em;
+    font-weight: bold;
     top: -2em
 }
 
 .projects::before {
-    content: "Your Projects"; 
+    content: "Your Projects";
 }
 
 .announcements::before {

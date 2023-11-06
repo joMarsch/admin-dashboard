@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
             <div class="search-bar">
-                <button>Search</button>
+                <button class="icon-button search-button"></button>
                 <input type="text" placeholder="Search">
             </div>
             <div class="account-small">
-                <button>Bell</button>
+                <button class="icon-button bell-button"></button>
+                <img src="pictures/account-circle.svg" alt="Profile Image">
                 <span>User Name</span>
             </div>
             <div class="account-big">
-                <span>User Name (@username)</span> 
+                <img src="pictures/account-circle.svg" alt="Profile Image">
+                <div>
+                    <span>Hi there,</span>
+                    <span>User Name (@username)</span>
+                </div>
             </div>
             <div class="actions">
                 <button>New</button>
@@ -27,22 +34,72 @@
             </div>
         </div>
         <div class="sidebar">
-            <div class="logo">Dashboard</div>
+            <div class="logo">
+                <a href="index.html">
+                    <span class="icon logo-icon"></span>
+                    <h1>Dashboard</h1>
+                </a>
+            </div>
             <div class="navigation">
                 <ul>
-                    <li>Home</li>
-                    <li>Profile</li>
-                    <li>Messages</li>
-                    <li>History</li>
-                    <li>Tasks</li>
-                    <li>Communities</li>
+                    <li>
+                        <a href="">
+                            <span class="icon home-icon"></span>
+                            <span>Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon profile-icon"></span>
+                            <span>Profile</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon message-icon"></span>
+                            <span>Messages</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon history-icon"></span>
+                            <span>History</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon task-icon"></span>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon community-icon"></span>
+                            <span>Communities</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             <div class="branding">
                 <ul>
-                    <li>Settings</li>
-                    <li>Support</li>
-                    <li>Privacy</li>
+                    <li>
+                        <a href="">
+                            <span class="icon settings-icon"></span>
+                            <span>Settings</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon support-icon"></span>
+                            <span>Support</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon privacy-icon"></span>
+                            <span>Privacy</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -68,4 +125,5 @@
         </div>
     </div>
 </body>
+
 </html>
