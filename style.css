@@ -1,3 +1,5 @@
+/* General Properties */
+
 :root {
     --header-background-color: white;
     --sidebar-background-color: rgb(40, 101, 231);
@@ -23,14 +25,16 @@ button:hover {
     cursor: pointer;
 }
 
+/* Layout of the Website */
+
 .container {
     display: grid;
     min-height: 100vh;
     grid-template-columns: var(--sidebar-width) 1fr;
     grid-template-rows: var(--header-height) 1fr;
     grid-template-areas:
-    "sidebar header"
-    "sidebar main-content";
+        "sidebar header"
+        "sidebar main-content";
 
 }
 
@@ -77,20 +81,6 @@ button:hover {
 
 }
 
-.projects {
-    /* Styling */
-    background-color: brown;
-
-    /* Grid */
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-template-rows: repeat(auto-fit, var(--project-height));
-    gap: 15px;
-
-    /* Boxing */
-    margin-right: 32px;
-}
-
 /* Styling the content of the sidebar */
 
 .sidebar ul {
@@ -106,13 +96,14 @@ button:hover {
     margin-bottom: 20px;
 }
 
-.sidebar ul li a, .logo a{
+.sidebar ul li a,
+.logo a {
     display: flex;
     align-items: center;
     gap: 10px;
     text-decoration: none;
     color: white;
-    
+
 }
 
 .icon {
@@ -176,10 +167,11 @@ button:hover {
     border: 0px;
 
     padding: 5px;
-    width: clamp(200px,100%,600px);
+    width: clamp(200px, 100%, 600px);
 }
 
-.account-big, .account-small {
+.account-big,
+.account-small {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -249,63 +241,113 @@ button:hover {
     background-image: url(pictures/magnify.svg);
 }
 
-/* Creating the titles for the sections in main-content */
+/* Styling of the Main Content */
 
-.projects, .announcements, .trending {
-    position: relative;
-}
+.projects {
+    /* Grid */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-rows: repeat(auto-fit, var(--project-height));
+    gap: 15px;
 
-.projects::before, .announcements::before, .trending::before {
-    position: absolute;
-    font-size: 1.2em;
-    font-weight: bold;
-    top: -2em
-}
-
-.projects::before {
-    content: "Your Projects";
-}
-
-.announcements::before {
-    content: "Announcements";
-}
-
-.trending::before {
-    content: "Trending";
-}
-
-/* Alignment of content inside trending and announcements */
-
-.trending, .announcements {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.trending {
-    background-color: chartreuse;
-    margin-top: 64px;
+    /* Boxing */
+    margin-right: 32px;
 }
 
 .announcements {
-    background-color: aquamarine;
+    box-sizing: border-box;
+    background-color: var(--header-background-color);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.trending {
+    box-sizing: border-box;
+    background-color: var(--header-background-color);
+    margin-top: 64px;
+    border-radius: 16px;
+    padding: 32px;
+}
+
+/* Creating the titles for the sections in main-content */
+
+.projects,
+.announcements,
+.trending {
+    position: relative;
+}
+
+.projects h1,
+.announcements h1,
+.trending h1 {
+    position: absolute;
+    font-size: 1.2em;
+    font-weight: bold;
+    top: -2em;
+    left: 0px;
 }
 
 /* Styling of the divs in main-content */
 
 .projects div {
-    background-color: yellow;
+    background-color: var(--header-background-color);
     height: var(--project-height);
+    border-radius: 16px;
 }
+
+/* Designing the Announcements Part */
 
 .announcements div {
-    background-color: chocolate;
+    box-sizing: border-box;
+    padding: 12px 0px;
     flex-shrink: 0;
-    height: 120px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
 }
 
-.trending div {
-    background-color: darksalmon;
-    flex-shrink: 0;
-    height: 80px;
+
+.announcements div span:first-child {
+    font-weight: bold;
+}
+
+.announcements > :nth-child(n + 3) {
+    border-top: solid;
+    border-width: 2px;
+    border-color: lightgray;
+}
+
+.announcements div>span+span {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Designing the Trending Part */
+
+.trending>div {
+    display: grid;
+    grid-template-columns: min-content auto;
+    gap: 12px;
+    height: auto;
+}
+
+.trending div img {
+    width: calc(0.8 * var(--account-image-standard-width));
+    height: auto;
+}
+
+.trending div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.trending div div>span+span {
+    color: grey;
 }
