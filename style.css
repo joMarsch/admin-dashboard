@@ -8,7 +8,7 @@
     --sidebar-width: 300px;
     --header-height: 200px;
 
-    --project-height: 240px;
+    --project-height: 350px;
 
 
     --account-image-standard-width: 80px;
@@ -49,6 +49,24 @@ button:hover {
     display: grid;
     grid-template-columns: 1fr 400px;
     grid-area: header;
+
+    position: relative;
+}
+
+.header::after {
+    /* Pseudo Object for the Form Shadow */
+    content: "";
+
+    /* Styling */
+    background: linear-gradient(to bottom, rgba(148, 147, 147, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+
+    /* Position */
+    position: absolute;
+    top: 100%;
+
+    /* Size */
+    width: calc(100vw - var(--sidebar-width));
+    height: 6px;
 }
 
 .sidebar {
@@ -246,7 +264,7 @@ button:hover {
 .projects {
     /* Grid */
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-template-rows: repeat(auto-fit, var(--project-height));
     gap: 15px;
 
@@ -280,11 +298,11 @@ button:hover {
     position: relative;
 }
 
-.projects h1,
-.announcements h1,
-.trending h1 {
+.projects > h2,
+.announcements > h2,
+.trending > h2 {
     position: absolute;
-    font-size: 1.2em;
+    font-size: 1.25em;
     font-weight: bold;
     top: -2em;
     left: 0px;
@@ -292,10 +310,47 @@ button:hover {
 
 /* Styling of the divs in main-content */
 
-.projects div {
-    background-color: var(--header-background-color);
+.projects > div, .announcements, .trending {
+    box-shadow: 2px 2px 5px rgb(78, 78, 78);
+}
+/* Styling the Projects Part */
+
+.projects > div {
+    background: linear-gradient(
+        to right,
+        orange 0px,
+        orange 8px,
+        var(--header-background-color) 8px,
+        var(--header-background-color) 100%
+    );
     height: var(--project-height);
     border-radius: 16px;
+    padding: 24px;
+    padding-left: 28px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    overflow-y: auto;
+    gap: 8px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 24px;
+}
+
+.favorite-button {
+    background-image: url(pictures/star-plus-outline.svg);
+}
+
+.watch-button {
+    background-image: url(pictures/eye-plus-outline.svg);
+}
+
+.share-button {
+    background-image: url(pictures/share-variant.svg);
 }
 
 /* Designing the Announcements Part */
@@ -309,18 +364,13 @@ button:hover {
     flex-direction: column;
 }
 
-
-.announcements div span:first-child {
-    font-weight: bold;
-}
-
 .announcements > :nth-child(n + 3) {
     border-top: solid;
     border-width: 2px;
     border-color: lightgray;
 }
 
-.announcements div>span+span {
+.announcements div > p {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
